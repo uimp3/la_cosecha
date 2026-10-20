@@ -1,42 +1,45 @@
+from sqlalchemy import select
+from sqlalchemy.orm import Session
+
+from app.models.producto_model import Producto
 from app.schemas.producto_schema import ProductoCrear
 
-productos = []
-contador_id = 1
 
-def listar_productos():
-    return productos;
+def listar_productos(db: Session):
+    return db.scalars(select(Producto).order_by(Producto.id)).all()
 
-def crear_productos(datos: ProductoCrear):
-    global contador_id
-    nuevo = {
-        "id": contador_id,
-        "nombre": datos.nombre,
-        "precio": datos.precio,
-        "stock": datos.stock,
-        "categoria_id": datos.categoria_id
-    }
-    productos.append(nuevo)
-    contador_id += 1
+
+def buscar_producto(db: Session, producto_id: int):
+    return db.get(Producto, producto_id)
+
+
+def buscar_por_nombre(db: Session, nombre: str):
+    return db.scalar(select(Producto).where(Producto.nombre == nombre))
+
+
+def crear_producto(db: Session, datos: ProductoCrear):
+    nuevo = Producto(
+        nombre=datos.nombre,
+        precio=datos.precio,
+        stock=datos.stock,
+        categoria_id=datos.categoria_id,
+    )
+    db.add(nuevo)
+    db.commit()
+    db.refresh(nuevo)
     return nuevo
 
-def buscar_producto(id: int):
-    for producto in productos:
-        if producto["id"] == id:
-            return producto
-    return None
 
-def actualizar_producto(producto_id: int, datos: ProductoCrear):
-    producto = buscar_producto(producto_id)
-    if producto:
-        producto["nombre"] = datos.nombre
-        producto["precio"] = datos.precio
-        producto["stock"] = datos.stock
-        producto["categoria_id"] = datos.categoria_id
-        return producto
-    return None
+def actualizar_producto(db: Session, producto: Producto, datos: ProductoCrear):
+    producto.nombre = datos.nombre
+    producto.precio = datos.precio
+    producto.stock = datos.stock
+    producto.categoria_id = datos.categoria_id
+    db.commit()
+    db.refresh(producto)
+    return producto
 
-def eliminar_producto(producto_id: int):
-    producto = buscar_producto(producto_id)
-    if producto:
-        productos.remove(producto)
-        return True
+
+def eliminar_producto(db: Session, producto: Producto):
+    db.delete(producto)
+    db.commit()
