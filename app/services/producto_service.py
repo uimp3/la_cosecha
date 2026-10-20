@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.models.detalle_venta_model import DetalleVenta
 from app.models.producto_model import Producto
 from app.schemas.producto_schema import ProductoCrear
 
@@ -43,3 +44,7 @@ def actualizar_producto(db: Session, producto: Producto, datos: ProductoCrear):
 def eliminar_producto(db: Session, producto: Producto):
     db.delete(producto)
     db.commit()
+
+
+def tiene_ventas(db: Session, producto_id: int) -> bool:
+    return db.scalar(select(DetalleVenta.id).where(DetalleVenta.producto_id == producto_id).limit(1)) is not None
