@@ -87,12 +87,6 @@
   }
   .nav-item.activo .etiqueta{background:rgba(167,139,250,.18);color:#e9d5ff}
 
-  .ruta{margin-top:18px;padding-top:14px;border-top:1px solid rgba(148,163,184,.14)}
-  .ruta h4{font-size:11px;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:8px}
-  .ruta li{list-style:none;font-size:12.5px;padding:4px 0;color:rgba(255,255,255,.75);display:flex;gap:8px}
-  .ruta li.hoy{color:#fff;font-weight:700}
-  .ruta li.pend{color:rgba(255,255,255,.45)}
-
   .usuario{
     margin-top:auto;display:flex;align-items:center;gap:10px;
     padding-top:16px;border-top:1px solid rgba(148,163,184,.14);
@@ -274,7 +268,7 @@
   /* ---------- modal ---------- */
   .fondo-modal{position:fixed;inset:0;background:rgba(26,16,60,.45);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
   .fondo-modal.ver{display:flex}
-  .modal{background:#fff;border-radius:18px;width:100%;max-width:440px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;animation:aparece .2s ease}
+  .modal{background:linear-gradient(135deg, rgb(45, 28, 102), rgb(26,16,60));border-radius:18px;width:100%;max-width:440px;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden;animation:aparece .2s ease}
   .modal-cab{padding:18px 22px;border-bottom:1px solid var(--gris-suave);display:flex;align-items:center;justify-content:space-between}
   .modal-cab h3{font-size:17px}
   .modal-cab .ruta-api{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--morado-2);background:#efeafd;padding:3px 8px;border-radius:6px}
@@ -287,7 +281,7 @@
   .dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .error-api{display:none;padding:11px 13px;border-radius:10px;background:var(--rojo-suave);color:var(--rojo);font-size:13.5px;font-weight:600;line-height:1.4}
   .error-api.ver{display:flex;gap:9px;align-items:flex-start}
-  .modal-pie{padding:14px 22px;border-top:1px solid var(--gris-suave);display:flex;justify-content:flex-end;gap:10px;background:#faf9fe}
+  .modal-pie{padding:14px 22px;border-top:1px solid var(--gris-suave);display:flex;justify-content:flex-end;gap:10px}
   .modal p.texto{font-size:14.5px;line-height:1.5;color:var(--tinta)}
 
   /* ---------- código de estado ---------- */
@@ -427,16 +421,6 @@
   <button class="nav-item solo-admin" data-pantalla="usuarios"><span class="ic">👥</span> Usuarios</button>
   <button class="nav-item" data-pantalla="venta"><span class="ic">🛒</span> Nueva venta</button>
   <button class="nav-item" data-pantalla="ventas"><span class="ic">🧾</span> Ventas del día</button>
-
-  <div class="ruta">
-    <h4>Lo que ya sabe hacer la API</h4>
-    <ul>
-      <li>✅ Clase 1 · Esqueleto por capas</li>
-      <li>✅ Clase 2 · PostgreSQL + CRUD</li>
-      <li>✅ Clase 3 · Login, JWT y roles</li>
-      <li class="hoy">✅ Clase 4 · Ventas, Excel y deploy</li>
-    </ul>
-  </div>
 
   <div class="usuario">
     <div class="avatar" id="u-avatar">?</div>
