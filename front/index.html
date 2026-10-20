@@ -790,8 +790,7 @@
   /* =========================================================
      CONFIGURACIÓN
      ========================================================= */
-  // Cambia esta URL por la de TU API cuando la publiques en Render.
-  const API_PRODUCCION = "https://la-cosecha-api.onrender.com";
+  const API_PRODUCCION = "https://la-cosecha.onrender.com";
 
   const ES_LOCAL = ["127.0.0.1", "localhost", ""].includes(location.hostname);
   const API = (new URLSearchParams(location.search).get("api") || (ES_LOCAL ? "http://127.0.0.1:8000" : API_PRODUCCION)).replace(/\/$/, "");
