@@ -482,10 +482,6 @@
       </div>
     </div>
 
-    <div class="aviso">
-      <span>🔌</span>
-      <span>Cada petición viaja con <code>Authorization: Bearer &lt;token&gt;</code>. Sin token, la API responde <code>401</code>; con token de vendedora, escribir responde <code>403</code>. El front oculta botones, pero <b>quien protege es el backend</b>.</span>
-    </div>
   </section>
 
   <!-- ---------- PANTALLA: CATEGORÍAS ---------- -->
@@ -510,10 +506,6 @@
       </div>
     </div>
 
-    <div class="aviso">
-      <span>🛡️</span>
-      <span>Prueben borrar una categoría que tenga productos: la API responde <code>409</code>. Y aunque alguien se saltara la API, la <b>llave foránea</b> de PostgreSQL tampoco lo permitiría.</span>
-    </div>
   </section>
 
   <!-- ---------- PANTALLA: USUARIOS ---------- -->
@@ -541,10 +533,6 @@
       </div>
     </div>
 
-    <div class="aviso">
-      <span>🔐</span>
-      <span>La contraseña viaja una sola vez y la API guarda solo su <b>hash Argon2</b>. Por eso nadie, ni siquiera Doña Marta, puede ver la contraseña de otra persona. El botón de activar o desactivar usa <code>PATCH /usuarios/{id}/estado</code> (Anexo de la guía).</span>
-    </div>
   </section>
 
   <!-- ---------- PANTALLA: NUEVA VENTA ---------- -->
@@ -571,10 +559,6 @@
       </div>
     </div>
 
-    <div class="aviso">
-      <span>🧮</span>
-      <span>El front solo envía <code>producto_id</code> y <code>cantidad</code>. Ni el total ni el vendedor viajan en el cuerpo: el backend los calcula y los toma del token. Si una línea no tiene stock, <b>no se guarda nada</b> (respuesta <code>409</code>).</span>
-    </div>
   </section>
 
   <!-- ---------- PANTALLA: VENTAS DEL DÍA ---------- -->
@@ -606,10 +590,6 @@
       <div id="lista-ventas"><div class="vacio" style="padding:26px">Sin ventas cargadas.</div></div>
     </div>
 
-    <div class="aviso">
-      <span>🧾</span>
-      <span><code>GET /ventas/?fecha=AAAA-MM-DD</code>. La administradora ve las ventas de todo el equipo; una vendedora ve <b>solo las suyas</b>. Ese filtro lo hace el backend con el usuario del token, no el front.</span>
-    </div>
   </section>
 
 </main>
