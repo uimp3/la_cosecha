@@ -142,8 +142,9 @@
   }
   .filtros input:focus,.filtros select:focus{outline:2px solid rgba(139,92,246,.35);border-color:var(--morado)}
   .chk{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--gris);cursor:pointer}
-  .tabla-scroll{overflow-x:auto}
+  .tabla-scroll{max-height:440px;overflow:auto;border-radius:0 0 12px 12px}
   table{width:100%;border-collapse:collapse}
+  thead th{position:sticky;top:0;z-index:2;background:rgba(15,23,42,.96);box-shadow:inset 0 -1px 0 var(--gris-suave)}
   th{text-align:left;font-size:12.5px;color:var(--gris);font-weight:600;padding:11px 20px;background:rgba(148,163,184,.06);white-space:nowrap}
   td{padding:13px 20px;font-size:14.5px;border-top:1px solid var(--gris-suave);vertical-align:middle;color:#dfe7f7}
   tbody tr:hover{background:rgba(148,163,184,.04)}
@@ -789,7 +790,8 @@
   /* =========================================================
      CONFIGURACIÓN
      ========================================================= */
-  const API_PRODUCCION = "https://la-cosecha.onrender.com";
+  // Cambia esta URL por la de TU API cuando la publiques en Render.
+  const API_PRODUCCION = "https://la-cosecha-api.onrender.com";
 
   const ES_LOCAL = ["127.0.0.1", "localhost", ""].includes(location.hostname);
   const API = (new URLSearchParams(location.search).get("api") || (ES_LOCAL ? "http://127.0.0.1:8000" : API_PRODUCCION)).replace(/\/$/, "");
